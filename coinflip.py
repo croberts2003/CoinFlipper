@@ -39,9 +39,11 @@ def options():
 
     while True:
         print('Options:')
-        response = input('1. Flip Coin\n2. Generate Coin Flip Data\n3. Show session flip data\n4. Exit')
+        response = input('1. Flip Coin\n2. Generate Coin Flip Data\n3. Show session flip data\n4. Exit\n')
         if response == '1':
             single_data = flipCoin(heads_record, tails_record)
+            heads_record += single_data[0]
+            tails_record += single_data[1]
             
         elif response == '2':
             response = input('How many loops of data would you like to generate?')
@@ -53,8 +55,8 @@ def options():
                 data = massFlip(limit, heads_record, tails_record)
 
         elif response == '3':
-            heads_record = data[0] + single_data[0]
-            tails_record = data[1] + single_data[1]
+            heads_record += data[0]
+            tails_record += data[1]
 
             print("Total Heads for this sessions is " + str(heads_record))
             print("Total Tails for this sessions is " + str(tails_record))
